@@ -113,6 +113,16 @@ h2.sec{font:400 1.7rem/1.2 var(--serif);letter-spacing:-.01em;margin:52px 0 0}
 .card[aria-pressed="true"],.card[aria-pressed="true"]:hover{transform:translateY(-10px)}
 .card[aria-pressed="true"] img,.card[aria-pressed="true"] .cph{outline:3px solid var(--ink);outline-offset:2px}
 @media (max-width:560px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 16px}}
+.sec-btn{appearance:none;background:none;border:0;padding:0;margin:0;color:inherit;font:inherit;letter-spacing:inherit;cursor:pointer;display:inline-flex;align-items:center;text-align:left}
+.sec-btn::before{content:"";flex:none;border:solid transparent;border-width:6px 0 6px 9px;border-left-color:currentColor;margin-right:13px;transition:transform .2s ease}
+.sec-btn[aria-expanded="true"]::before{transform:rotate(90deg)}
+.sec-btn .cnt{font:500 .9rem var(--sans);color:var(--muted);margin-left:14px}
+.spine{position:relative;transform-origin:50% 100%;transform:rotate(-2.5deg);padding-top:24px;padding-bottom:24px}
+.spine.paper{height:300px;padding:24px 4px}
+.spine::before,.spine::after{content:"";position:absolute;left:0;right:0;height:3px;border-top:2px solid rgba(255,255,255,.5);border-bottom:2px solid rgba(255,255,255,.5);pointer-events:none}
+.spine::before{top:9px} .spine::after{bottom:9px}
+.spine:hover{transform:translateY(-8px) rotate(-2.5deg)}
+.spine[aria-pressed="true"],.spine[aria-pressed="true"]:hover{transform:translateY(-16px) rotate(0deg)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -143,16 +153,16 @@ h2.sec{font:400 1.7rem/1.2 var(--serif);letter-spacing:-.01em;margin:52px 0 0}
   </div>
   <p class="status" id="status" aria-live="polite"></p>
 
-  <h2 class="sec" id="h-shelf">Books and research</h2>
+  <h2 class="sec" id="h-shelf"><button class="sec-btn" id="b-shelf" data-sec="shelf" aria-expanded="true" aria-controls="shelf"><span class="tx">Books and research</span><span class="cnt"></span></button></h2>
   <div class="shelf" id="shelf" role="group" aria-label="Books and research papers on the shelf"></div>
   <div class="key" id="key">
     <span><i style="background:var(--book)"></i>Book</span>
     <span><i style="background:var(--paper)"></i>Research paper</span>
     <span>Thicker spine, more pages</span>
   </div>
-  <h2 class="sec" id="h-art">Magazine articles</h2>
+  <h2 class="sec" id="h-art"><button class="sec-btn" id="b-art" data-sec="art" aria-expanded="true" aria-controls="grid"><span class="tx">Magazine articles</span><span class="cnt"></span></button></h2>
   <div class="grid" id="grid" role="group" aria-label="Magazine articles"></div>
-  <h2 class="sec" id="h-info">Infographics</h2>
+  <h2 class="sec" id="h-info"><button class="sec-btn" id="b-info" data-sec="info" aria-expanded="true" aria-controls="grid-info"><span class="tx">Infographics</span><span class="cnt"></span></button></h2>
   <div class="grid" id="grid-info" role="group" aria-label="Infographics"></div>
   <p class="empty" id="empty" hidden>No works match your search. Clear the search or choose All.</p>
 
@@ -164,6 +174,7 @@ const TYPES={book:"Book",paper:"Research paper",article:"Magazine article",infog
 
 const $=s=>document.querySelector(s);
 let WORKS=[],filter="all",query="",selected=null;
+const collapsed={};
 const panel=document.createElement("section");
 panel.className="detail";panel.setAttribute("aria-live","polite");
 const vshort=w=>(w.venue||"").split(",").slice(0,2).join(",");
@@ -221,7 +232,7 @@ function gridHtml(items,years){
 function renderLists(){
   const list=WORKS.filter(matches);
   if(selected&&!list.some(w=>w.id===selected))selected=null;
-  const shelf=list.filter(w=>w.type==="book"||w.type==="paper"),arts=list.filter(w=>w.type==="article"),infos=list.filter(isInfo);
+  const shelf=[...list.filter(w=>w.type==="book"),...list.filter(w=>w.type==="paper")],arts=list.filter(w=>w.type==="article"),infos=list.filter(isInfo);
   $("#shelf").innerHTML=shelf.map(w=>{
     const label=`<span class="tt">${(w.lines||[w.short]).map(l=>`<span class="ln">${l}</span>`).join("")}</span>`;
     return `<div class="slot"><button class="spine ${w.type}" data-id="${w.id}" style="width:${Math.round(30+w.pages*0.2)}px"
@@ -233,15 +244,24 @@ function renderLists(){
     const w=WORKS.find(x=>x.id===im.closest(".card").dataset.id);
     const ph=document.createElement("span");ph.className="cph "+w.type;ph.textContent=w.short;im.replaceWith(ph);
   },{once:true}));
-  ["#h-shelf","#shelf","#key"].forEach(q=>$(q).hidden=!shelf.length);
-  ["#h-art","#grid"].forEach(q=>$(q).hidden=!arts.length);
-  ["#h-info","#grid-info"].forEach(q=>$(q).hidden=!infos.length);
+  const secs={shelf:[shelf,["#shelf","#key"]],art:[arts,["#grid"]],info:[infos,["#grid-info"]]};
+  Object.entries(secs).forEach(([k,[items,els]])=>{
+    $("#h-"+k).hidden=!items.length;
+    $("#b-"+k).setAttribute("aria-expanded",String(!collapsed[k]));
+    $("#b-"+k+" .cnt").textContent=items.length;
+    els.forEach(q=>$(q).hidden=!items.length||!!collapsed[k]);
+    if(collapsed[k]&&selected&&items.some(w=>w.id===selected))selected=null;
+  });
   $("#empty").hidden=list.length>0;
   $("#status").textContent=list.length===WORKS.length?`${list.length} works`:`${list.length} of ${WORKS.length} works shown`;
   sync();
 }
 function render(){renderChips();renderLists();}
 $("#chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(b){filter=b.dataset.f;render();}});
+document.addEventListener("click",e=>{
+  const sb=e.target.closest(".sec-btn");
+  if(sb){collapsed[sb.dataset.sec]=!collapsed[sb.dataset.sec];renderLists();return;}
+});
 document.addEventListener("click",e=>{
   const b=e.target.closest(".spine,.card");if(!b)return;
   selected=selected===b.dataset.id?null:b.dataset.id;sync();
