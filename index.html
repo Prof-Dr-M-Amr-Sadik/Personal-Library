@@ -174,7 +174,9 @@ const TYPES={book:"Book",paper:"Research paper",article:"Magazine article",infog
 
 const $=s=>document.querySelector(s);
 let WORKS=[],filter="all",query="",selected=null;
-const collapsed={};
+const collapsed={art:true,info:true};
+let saved=null;
+const secOf={book:"shelf",paper:"shelf",article:"art",infographic:"info"};
 const panel=document.createElement("section");
 panel.className="detail";panel.setAttribute("aria-live","polite");
 const vshort=w=>(w.venue||"").split(",").slice(0,2).join(",");
@@ -257,7 +259,7 @@ function renderLists(){
   sync();
 }
 function render(){renderChips();renderLists();}
-$("#chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(b){filter=b.dataset.f;render();}});
+$("#chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(b){filter=b.dataset.f;if(secOf[filter])collapsed[secOf[filter]]=false;render();}});
 document.addEventListener("click",e=>{
   const sb=e.target.closest(".sec-btn");
   if(sb){collapsed[sb.dataset.sec]=!collapsed[sb.dataset.sec];renderLists();return;}
@@ -266,7 +268,12 @@ document.addEventListener("click",e=>{
   const b=e.target.closest(".spine,.card");if(!b)return;
   selected=selected===b.dataset.id?null:b.dataset.id;sync();
 });
-$("#q").addEventListener("input",e=>{query=e.target.value;render();});
+$("#q").addEventListener("input",e=>{
+  const had=query.trim()!=="";query=e.target.value;const has=query.trim()!=="";
+  if(!had&&has){saved={...collapsed};Object.keys(collapsed).forEach(k=>collapsed[k]=false);}
+  if(had&&!has&&saved){Object.assign(collapsed,saved);saved=null;}
+  render();
+});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&selected){selected=null;sync();}});
 window.addEventListener("resize",()=>{if(selected)placePanel();});
 fetch("works.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{
