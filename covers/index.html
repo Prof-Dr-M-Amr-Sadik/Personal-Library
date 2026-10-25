@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Research papers, books and magazine articles by Prof. Dr. M. Amr Sadik on people management, organizational culture and the future of work.">
+<link rel="icon" href="icon.png">
+<title>Prof. Dr. M. Amr Sadik — Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Spectral:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#E8EEF3; --panel:#F7F9FB; --ink:#101828; --muted:#566170; --line:#C5CFD9;
+  --book:#1F2A5C; --paper:#0E7C7B; --article:#B5446E; --info:#8F6A12;
+  --serif:"Spectral",Georgia,"Times New Roman",serif;
+  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--ground:#0F1722; --panel:#172131; --ink:#E8EEF5; --muted:#9AA7B8; --line:#2C394B;
+        --book:#4A5AB8; --paper:#14897F; --article:#C2507C; --info:#B3841A;}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font:16px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:56px 24px 72px}
+h1{font:300 clamp(2.2rem,4.6vw,3.6rem)/1.02 var(--serif);letter-spacing:-.02em;margin:0 0 14px}
+.lede{font:400 clamp(1.25rem,2.4vw,1.55rem)/1.5 var(--serif);max-width:36em;margin:0}
+.lede.sub{font-size:1.15rem;color:var(--muted);margin-top:18px}
+.creds{list-style:none;margin:44px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 36px}
+.creds li{border-left:2px solid var(--line);padding-left:14px;font-size:.95rem;line-height:1.4}
+.tools{display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;margin:44px 0 10px}
+.search{flex:1 1 240px;max-width:340px;font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:10px 14px}
+.search::placeholder{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 .92rem var(--sans);color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.chip span{color:var(--muted);margin-left:6px;font-weight:400}
+.chip[aria-pressed="true"] span{color:inherit;opacity:.7}
+.chip.c-book{--c:var(--book)} .chip.c-paper{--c:var(--paper)} .chip.c-article{--c:var(--article)} .chip.c-infographic{--c:var(--info)}
+.chip[class*="c-"]{border-color:var(--c);color:var(--c)}
+.chip[class*="c-"] span{color:inherit;opacity:.7}
+.chip[class*="c-"][aria-pressed="true"]{background:var(--c);border-color:var(--c);color:#fff}
+.status{color:var(--muted);font-size:.92rem;margin:0 0 6px;min-height:1.5em}
+.shelf{display:flex;flex-wrap:wrap;row-gap:20px;padding-top:36px}
+.slot{position:relative;height:350px;display:flex;align-items:flex-end;padding:0 3px}
+.slot::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:7px;background:var(--ink);opacity:.9}
+.spine{appearance:none;border:0;margin:0;color:#fff;cursor:pointer;display:block;
+  writing-mode:vertical-rl;text-align:left;padding:16px 4px;font:600 .9rem/1.2 var(--sans);
+  border-radius:3px 3px 0 0;transition:transform .25s ease,opacity .2s ease;overflow:hidden}
+.spine.book{background:var(--book);height:330px;font:600 1.02rem/1.25 var(--serif)}
+.spine.paper{background:var(--paper);height:286px}
+.spine.paper,.spine.article{font-size:.86rem;padding:12px 4px}
+.spine.article{background:var(--article);height:226px}
+.spine{display:flex;align-items:center;justify-content:center;text-align:center}
+.spine .tt{display:block}
+.spine .ln{display:block}
+.spine.book .ln{white-space:nowrap}
+.shelf .detail,.grid .detail{flex:0 0 100%;grid-column:1/-1;margin:28px 0 12px;animation:rise .28s ease}
+@keyframes rise{from{opacity:0;transform:translateY(-8px)}}
+.spine[aria-pressed="true"]{transform:translateY(-16px);outline:3px solid var(--ink);outline-offset:2px}
+.spine:hover{transform:translateY(-8px)}
+.spine[aria-pressed="true"]:hover{transform:translateY(-16px)}
+.spine:disabled{opacity:.18;cursor:default;transform:none}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.key{display:flex;flex-wrap:wrap;gap:6px 22px;margin:22px 0 0;color:var(--muted);font-size:.88rem}
+.key i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:7px}
+.detail{display:grid;grid-template-columns:230px 1fr;gap:40px;margin-top:44px;padding:32px;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+.plate{aspect-ratio:2/3;border-radius:4px;overflow:hidden;color:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:22px 20px}
+.plate img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.plate.paper{background:var(--paper)} .plate.article{background:var(--article)} .plate.infographic{background:var(--info)} .plate.book{background:var(--book)} .plate.cover{padding:0;box-shadow:0 0 0 1px var(--line),0 14px 30px -18px rgba(16,24,40,.45)}
+.plate .pt{font:400 1.45rem/1.15 var(--serif)}
+.plate .pv{font-size:.82rem;opacity:.85}
+.kind{font:600 .92rem var(--sans);margin:0 0 6px}
+.kind.book{color:var(--book)} .kind.paper{color:var(--paper)} .kind.article{color:var(--article)} .kind.infographic{color:var(--info)}
+.detail h2{font:400 clamp(1.6rem,3vw,2.2rem)/1.15 var(--serif);margin:0 0 10px;letter-spacing:-.01em}
+.meta{color:var(--muted);margin:0 0 18px}
+.desc{font:400 1.12rem/1.65 var(--serif);max-width:36em;margin:0 0 26px}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{font:600 .95rem var(--sans);text-decoration:none;border-radius:6px;padding:11px 18px;background:var(--ink);color:var(--ground);border:1px solid var(--ink)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.off{background:transparent;color:var(--muted);border:1px dashed var(--line);cursor:default}
+.empty{padding:40px 0;color:var(--muted)}
+footer{margin-top:56px;color:var(--muted);font-size:.88rem}
+@media (max-width:760px){
+  .wrap{padding:36px 18px 56px}
+  .detail{grid-template-columns:1fr;gap:24px;padding:22px}
+  .plate{max-width:200px}
+  .slot{height:340px}
+}
+.hero{display:grid;grid-template-columns:280px minmax(0,1fr);gap:clamp(28px,5vw,56px);align-items:start}
+.portrait{width:100%;height:auto;display:block;border-radius:4px;box-shadow:0 18px 40px -22px rgba(16,24,40,.6)}
+.intro{min-width:0}
+@media (max-width:1000px){.creds{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.hero{display:block}.portrait{width:min(240px,100%);margin:0 auto 28px}}
+@media (max-width:560px){.creds{grid-template-columns:minmax(0,1fr)}}
+[hidden]{display:none!important}
+.cph.infographic{background:var(--info)} .cph.paper{background:var(--paper)} .cph.book{background:var(--book)}
+.detail.info{grid-template-columns:min(440px,40%) 1fr}
+.detail.info .plate{aspect-ratio:auto}
+.detail.info .plate img{height:auto;object-fit:contain}
+@media (max-width:760px){.detail.info{grid-template-columns:1fr}.detail.info .plate{max-width:none}}
+h2.sec{font:400 1.7rem/1.2 var(--serif);letter-spacing:-.01em;margin:52px 0 0}
+.shelf{padding-top:30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:26px 22px;margin-top:20px}
+.yr{grid-column:1/-1;font:400 1.15rem var(--serif);color:var(--muted);margin:14px 0 -4px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.card{appearance:none;background:none;border:0;padding:0;margin:0;cursor:pointer;text-align:left;color:var(--ink);font:inherit;display:flex;flex-direction:column;gap:9px;transition:transform .25s ease;align-self:start}
+.card img,.cph{width:100%;aspect-ratio:2/3;object-fit:cover;object-position:top center;border-radius:3px;display:block;box-shadow:0 0 0 1px var(--line),0 14px 24px -16px rgba(16,24,40,.55)}
+.cph{background:var(--article);color:#fff;font:400 1.1rem/1.2 var(--serif);padding:14px;display:flex;align-items:flex-end}
+.ct{font:600 .92rem/1.3 var(--sans)}
+.cv{font-size:.82rem;color:var(--muted);line-height:1.3}
+.card:hover{transform:translateY(-6px)}
+.card[aria-pressed="true"],.card[aria-pressed="true"]:hover{transform:translateY(-10px)}
+.card[aria-pressed="true"] img,.card[aria-pressed="true"] .cph{outline:3px solid var(--ink);outline-offset:2px}
+@media (max-width:560px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 16px}}
+.sec-btn{appearance:none;background:none;border:0;padding:0;margin:0;color:inherit;font:inherit;letter-spacing:inherit;cursor:pointer;display:inline-flex;align-items:center;text-align:left}
+.sec-btn::before{content:"";flex:none;border:solid transparent;border-width:6px 0 6px 9px;border-left-color:currentColor;margin-right:13px;transition:transform .2s ease}
+.sec-btn[aria-expanded="true"]::before{transform:rotate(90deg)}
+.sec-btn .cnt{font:500 .9rem var(--sans);color:var(--muted);margin-left:14px}
+.spine{position:relative;transform-origin:50% 100%;transform:rotate(-3.5deg);padding-top:24px;padding-bottom:24px}
+.spine.paper{height:300px;padding:24px 4px}
+.spine::before,.spine::after{content:"";position:absolute;left:0;right:0;height:3px;border-top:2px solid rgba(255,255,255,.5);border-bottom:2px solid rgba(255,255,255,.5);pointer-events:none}
+.spine::before{top:9px} .spine::after{bottom:9px}
+.spine:hover{transform:translateY(-8px) rotate(-3.5deg)}
+.spine[aria-pressed="true"],.spine[aria-pressed="true"]:hover{transform:translateY(-16px) rotate(0deg)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="hero">
+    <img class="portrait" src="amr-sadik.jpeg" width="1054" height="1492" alt="Portrait of Prof. Dr. M. Amr Sadik">
+    <div class="intro">
+    <h1>Prof. Dr. M. Amr Sadik</h1>
+    <p class="lede">For decades, Prof. Dr. M. Amr Sadik has worked where people and strategy meet: in executive suites across the Middle East and the Gulf, in lecture halls from Paris to Latvia, and in the journals and magazines that shape how leaders think about work.</p>
+    <p class="lede sub">This library gathers that work in one place: research on AI, culture and rebuilding after crisis; six books, among them readings of HR through Sun Tzu, Dante and the Godfather; and a long line of articles that asked HR to stop supporting the organization and start shaping it. Every spine on this shelf is a question he asked about how we work.</p>
+    </div>
+    </div>
+    <ul class="creds">
+      <li>Co-founder and Vice President of Educators, Dimensions Consulting Ltd, UK</li>
+      <li>Adjunct Professor of HR and Strategy Management, IPE Management School, Paris</li>
+      <li>HR Professor, GUST, Latvia</li>
+      <li>Member of the HBR Advisory Council</li>
+      <li>Ranked among the Top 50 Thought HR Leaders by Thinkers360, 2024</li>
+      <li>Winner of multiple global HR awards</li>
+    </ul>
+  </header>
+
+  <div class="tools">
+    <input class="search" id="q" type="search" placeholder="Search titles and topics" aria-label="Search works">
+    <div class="chips" id="chips" role="group" aria-label="Filter by type"></div>
+  </div>
+  <p class="status" id="status" aria-live="polite"></p>
+
+  <h2 class="sec" id="h-shelf"><button class="sec-btn" id="b-shelf" data-sec="shelf" aria-expanded="true" aria-controls="shelf"><span class="tx">Books and research</span><span class="cnt"></span></button></h2>
+  <div class="shelf" id="shelf" role="group" aria-label="Books and research papers on the shelf"></div>
+  <div class="key" id="key">
+    <span><i style="background:var(--book)"></i>Book</span>
+    <span><i style="background:var(--paper)"></i>Research paper</span>
+    <span>Thicker spine, more pages</span>
+  </div>
+  <h2 class="sec" id="h-art"><button class="sec-btn" id="b-art" data-sec="art" aria-expanded="true" aria-controls="grid"><span class="tx">Magazine articles</span><span class="cnt"></span></button></h2>
+  <div class="grid" id="grid" role="group" aria-label="Magazine articles"></div>
+  <h2 class="sec" id="h-info"><button class="sec-btn" id="b-info" data-sec="info" aria-expanded="true" aria-controls="grid-info"><span class="tx">Infographics</span><span class="cnt"></span></button></h2>
+  <div class="grid" id="grid-info" role="group" aria-label="Infographics"></div>
+  <p class="empty" id="empty" hidden>No works match your search. Clear the search or choose All.</p>
+
+    <footer>Select a work to open it, and again to close it. Research papers are open access under CC BY 4.0.</footer>
+</div>
+
+<script>
+const TYPES={book:"Book",paper:"Research paper",article:"Magazine article",infographic:"Infographic"};
+
+const $=s=>document.querySelector(s);
+let WORKS=[],filter="all",query="",selected=null;
+const collapsed={art:true,info:true};
+let saved=null;
+const secOf={book:"shelf",paper:"shelf",article:"art",infographic:"info"};
+const panel=document.createElement("section");
+panel.className="detail";panel.setAttribute("aria-live","polite");
+const vshort=w=>(w.venue||"").split(",").slice(0,2).join(",");
+const isInfo=w=>w.type==="infographic";
+
+function matches(w){
+  const q=query.trim().toLowerCase();
+  return (filter==="all"||w.type===filter)&&(!q||(w.title+" "+w.desc+" "+(w.venue||"")).toLowerCase().includes(q));
+}
+function renderChips(){
+  const opts=[["all","All",WORKS.length],...Object.entries(TYPES).map(([k,v])=>[k,v+"s",WORKS.filter(w=>w.type===k).length])];
+  $("#chips").innerHTML=opts.filter(o=>o[2]>0).map(([k,l,n])=>`<button class="chip${k==="all"?"":" c-"+k}" data-f="${k}" aria-pressed="${filter===k}">${l}<span>${n}</span></button>`).join("");
+}
+function fillPanel(w){
+  const f=w.file||w.pdf,read=w.image||f,info=isInfo(w),acts=[];
+  if(f)acts.push(`<a class="btn" href="${read}" target="_blank" rel="noopener">${info?"View full size":"Read online"}</a>`,`<a class="btn ghost" href="${f}" download>${info?"Download image":"Download PDF"}</a>`);
+  if(w.doi)acts.push(`<a class="btn ghost" href="${w.doi}" target="_blank" rel="noopener">View on journal site</a>`);
+  if(!f)acts.push(`<span class="btn off">PDF coming soon</span>`);
+  const meta=[w.venue,w.pages?`${w.pages} ${w.pages===1?"page":"pages"}`:""].filter(Boolean).join(" &nbsp;·&nbsp; ");
+  panel.className="detail"+(info?" info":"");
+  panel.innerHTML=`<div class="plate book cover"><img src="${info&&w.image?w.image:w.cover}" alt="${info?"":"Cover of "}${w.title}"></div>
+    <div><p class="kind ${w.type}">${TYPES[w.type]}</p><h2>${w.title}</h2>${meta?`<p class="meta">${meta}</p>`:""}
+    <p class="desc">${w.desc}</p><div class="actions">${acts.join("")}</div></div>`;
+  const im=panel.querySelector(".plate img");
+  if(im)im.addEventListener("error",()=>{
+    const p=panel.querySelector(".plate");p.className="plate "+w.type;
+    p.innerHTML=`<div class="pt">${w.lines?w.lines.join(" "):w.short}</div><div class="pv">${vshort(w)}${w.year?", "+w.year:""}</div>`;
+  },{once:true});
+}
+function placePanel(){
+  panel.remove();
+  const el=document.querySelector(`.spine[data-id="${selected}"],.card[data-id="${selected}"]`);
+  if(!el)return;
+  const item=el.closest(".slot")||el,kind=item.classList.contains("slot")?"slot":"card",top=item.offsetTop;
+  let last=item;
+  for(let n=item.nextElementSibling;n&&n.classList.contains(kind)&&n.offsetTop===top;n=n.nextElementSibling)last=n;
+  last.after(panel);
+}
+function sync(){
+  document.querySelectorAll(".spine,.card").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.id===selected)));
+  const w=WORKS.find(x=>x.id===selected);
+  if(!w){panel.remove();return;}
+  fillPanel(w);placePanel();
+  panel.scrollIntoView({block:"nearest",behavior:"smooth"});
+}
+function gridHtml(items,years){
+  let html="",yr="";
+  items.forEach(w=>{
+    if(years&&w.year!==yr){yr=w.year;html+=`<h3 class="yr">${yr}</h3>`;}
+    html+=`<button class="card" data-id="${w.id}" aria-pressed="false" aria-label="${w.title}${w.year?", "+w.year:""}">
+      <img src="${w.cover}" alt="" loading="lazy"><span class="ct">${w.short}</span>${vshort(w)?`<span class="cv">${vshort(w)}</span>`:""}</button>`;
+  });
+  return html;
+}
+function renderLists(){
+  const list=WORKS.filter(matches);
+  if(selected&&!list.some(w=>w.id===selected))selected=null;
+  const shelf=[...list.filter(w=>w.type==="book"),...list.filter(w=>w.type==="paper")],arts=list.filter(w=>w.type==="article"),infos=list.filter(isInfo);
+  $("#shelf").innerHTML=shelf.map(w=>{
+    const label=`<span class="tt">${(w.lines||[w.short]).map(l=>`<span class="ln">${l}</span>`).join("")}</span>`;
+    return `<div class="slot"><button class="spine ${w.type}" data-id="${w.id}" style="width:${Math.round(30+w.pages*0.2)}px"
+      aria-pressed="false" aria-label="${w.title}, ${TYPES[w.type]}, ${w.year}">${label}</button></div>`;
+  }).join("");
+  $("#grid").innerHTML=gridHtml(arts,true);
+  $("#grid-info").innerHTML=gridHtml(infos,false);
+  document.querySelectorAll(".card img").forEach(im=>im.addEventListener("error",()=>{
+    const w=WORKS.find(x=>x.id===im.closest(".card").dataset.id);
+    const ph=document.createElement("span");ph.className="cph "+w.type;ph.textContent=w.short;im.replaceWith(ph);
+  },{once:true}));
+  const secs={shelf:[shelf,["#shelf","#key"]],art:[arts,["#grid"]],info:[infos,["#grid-info"]]};
+  Object.entries(secs).forEach(([k,[items,els]])=>{
+    $("#h-"+k).hidden=!items.length;
+    $("#b-"+k).setAttribute("aria-expanded",String(!collapsed[k]));
+    $("#b-"+k+" .cnt").textContent=items.length;
+    els.forEach(q=>$(q).hidden=!items.length||!!collapsed[k]);
+    if(collapsed[k]&&selected&&items.some(w=>w.id===selected))selected=null;
+  });
+  $("#empty").hidden=list.length>0;
+  $("#status").textContent=list.length===WORKS.length?`${list.length} works`:`${list.length} of ${WORKS.length} works shown`;
+  sync();
+}
+function render(){renderChips();renderLists();}
+$("#chips").addEventListener("click",e=>{const b=e.target.closest(".chip");if(b){filter=b.dataset.f;if(secOf[filter])collapsed[secOf[filter]]=false;render();}});
+document.addEventListener("click",e=>{
+  const sb=e.target.closest(".sec-btn");
+  if(sb){collapsed[sb.dataset.sec]=!collapsed[sb.dataset.sec];renderLists();return;}
+});
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".spine,.card");if(!b)return;
+  selected=selected===b.dataset.id?null:b.dataset.id;sync();
+});
+$("#q").addEventListener("input",e=>{
+  const had=query.trim()!=="";query=e.target.value;const has=query.trim()!=="";
+  if(!had&&has){saved={...collapsed};Object.keys(collapsed).forEach(k=>collapsed[k]=false);}
+  if(had&&!has&&saved){Object.assign(collapsed,saved);saved=null;}
+  render();
+});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&selected){selected=null;sync();}});
+window.addEventListener("resize",()=>{if(selected)placePanel();});
+fetch("works.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{
+  WORKS=d;WORKS.forEach(w=>{w.cover=w.cover||"covers/"+w.id+".jpg"});
+  WORKS.sort((a,b)=>b.date.localeCompare(a.date));render();
+}).catch(()=>{$("#status").textContent="The library could not be loaded. Please refresh the page.";});
+</script>
+</body>
+</html>
