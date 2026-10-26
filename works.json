@@ -183,6 +183,32 @@
   "doi": null
  },
  {
+  "id": "mystery-decisions",
+  "type": "article",
+  "date": "2023-10-01",
+  "short": "The Mystery Decisions Leaders Make",
+  "title": "The Mystery Decisions Leaders Make",
+  "venue": "HR Future, October 2023, pp. 62–64",
+  "pages": 3,
+  "year": 2023,
+  "desc": "Why do leaders make strange decisions when it comes to people? Examples from hiring, appraisal and training, eight reasons behind poor people decisions, and a warning against HR black holes and black boxes.",
+  "pdf": "pdfs/hrfuture-2023-10-the-mystery-decisions-leaders-make.pdf",
+  "doi": null
+ },
+ {
+  "id": "conscience-of-organisation",
+  "type": "article",
+  "date": "2023-09-01",
+  "short": "The Conscience of an Organisation",
+  "title": "The Conscience of an Organisation",
+  "venue": "HR Future, September 2023, pp. 62–64",
+  "pages": 3,
+  "year": 2023,
+  "desc": "Published with the subtitle “Consider these ways to reduce breaches of the psychological contract in your company”. The text covers societal values, the influence of technology and education, and the role of values in organizations.",
+  "pdf": "pdfs/hrfuture-2023-09-the-conscience-of-an-organisation.pdf",
+  "doi": null
+ },
+ {
   "id": "values-in-crisis",
   "type": "article",
   "date": "2023-08-01",
@@ -206,6 +232,19 @@
   "year": 2023,
   "desc": "What happens after the great layoffs tsunami? The psychological effects on those laid off and on those who stay, what employers can do, and how to rebuild trust and collaboration.",
   "pdf": "pdfs/hrfuture-2023-07-the-day-after-tomorrow.pdf",
+  "doi": null
+ },
+ {
+  "id": "manage-people-disruptive",
+  "type": "article",
+  "date": "2023-06-01",
+  "short": "Manage Your People in Disruptive Times",
+  "title": "Manage Your People in Disruptive Times",
+  "venue": "HR Future, June 2023, pp. 16–19",
+  "pages": 4,
+  "year": 2023,
+  "desc": "A more inclusive style of leadership is needed to meet these challenges. Looks at the winds of change, the VUCA, BANI and TUNA worlds, what HR must do for the survivors, and the roles of resilience, attention, adaptation and transparency.",
+  "pdf": "pdfs/hrfuture-2023-06-manage-your-people-in-disruptive-times.pdf",
   "doi": null
  },
  {
