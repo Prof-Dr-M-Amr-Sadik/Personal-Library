@@ -149,6 +149,32 @@
   "doi": null
  },
  {
+  "id": "paradoxes-of-success",
+  "type": "article",
+  "date": "2024-06-01",
+  "short": "The Paradoxes of Success",
+  "title": "The Paradoxes of Success",
+  "venue": "HR Future, June 2024, pp. 24–25",
+  "pages": 2,
+  "year": 2024,
+  "desc": "Organizations must balance seemingly conflicting agendas, such as diversity and integration, saving money and investing, and change and stability. Describes these paradoxes of success and why managing the balance is the key to lasting performance.",
+  "pdf": "pdfs/hrfuture-2024-06-the-paradoxes-of-success.pdf",
+  "doi": null
+ },
+ {
+  "id": "paradoxical-truths",
+  "type": "article",
+  "date": "2024-05-01",
+  "short": "Yin-Yang: Paradoxical Truths",
+  "title": "Yin-Yang: Paradoxical Truths",
+  "venue": "HR Future, May 2024, pp. 22–24",
+  "pages": 3,
+  "year": 2024,
+  "desc": "Explores the paradoxical roles of HR, drawing on practitioners’ answers to two questions the author posted online, and offers ways to manage the tensions between compliance and innovation, short- and long-term goals, and other competing demands.",
+  "pdf": "pdfs/hrfuture-2024-05-paradoxical-truths.pdf",
+  "doi": null
+ },
+ {
   "id": "art-of-war-hr",
   "type": "book",
   "date": "2024-04-10",
@@ -166,6 +192,19 @@
   "doi": null
  },
  {
+  "id": "critical-thinker",
+  "type": "article",
+  "date": "2024-04-01",
+  "short": "Become a Critical Thinker",
+  "title": "Become a Critical Thinker",
+  "venue": "HR Future, April 2024, pp. 22–25",
+  "pages": 4,
+  "year": 2024,
+  "desc": "Understanding why critical thinking matters is the first step to becoming a critical thinker. Draws on Socrates and Aristotle, explains the habits of good thinkers, and shows how managers can build them in themselves and their teams.",
+  "pdf": "pdfs/hrfuture-2024-04-become-a-critical-thinker.pdf",
+  "doi": null
+ },
+ {
   "id": "black-holes-hrm",
   "type": "book",
   "date": "2024-03-01",
@@ -180,6 +219,19 @@
   "year": 2024,
   "desc": "A frank look at why HR fails and where it quietly loses value: eleven “black holes” from recruitment and appraisal to measurement and succession planning, plus the case for earning a seat at the table.",
   "pdf": "pdfs/book-2024-black-holes-of-hrm.pdf",
+  "doi": null
+ },
+ {
+  "id": "swot-refocus",
+  "type": "article",
+  "date": "2023-11-01",
+  "short": "SWOT Analysis Refocus",
+  "title": "SWOT Analysis Refocus",
+  "venue": "HR Future, November 2023, pp. 46–47",
+  "pages": 2,
+  "year": 2023,
+  "desc": "Asks whether the opportunities and threats in a SWOT analysis can also be looked at from inside the organization. Traces the origin of SWOT, revisits its concepts, and refocuses the tool on internal factors.",
+  "pdf": "pdfs/hrfuture-2023-11-swot-analysis-refocus.pdf",
   "doi": null
  },
  {

@@ -82,6 +82,10 @@ h1{font:300 clamp(2.2rem,4.6vw,3.6rem)/1.02 var(--serif);letter-spacing:-.02em;m
 .btn.off{background:transparent;color:var(--muted);border:1px dashed var(--line);cursor:default}
 .empty{padding:40px 0;color:var(--muted)}
 footer{margin-top:56px;color:var(--muted);font-size:.88rem}
+footer .hint{margin:0}
+.credit{border-top:1px solid var(--line);margin-top:26px;padding-top:20px;line-height:1.65}
+.credit p{margin:0 0 4px;max-width:46em}
+.credit a{color:var(--ink);text-underline-offset:3px;text-decoration-thickness:1px}
 @media (max-width:760px){
   .wrap{padding:36px 18px 56px}
   .detail{grid-template-columns:1fr;gap:24px;padding:22px}
@@ -166,7 +170,13 @@ h2.sec{font:400 1.7rem/1.2 var(--serif);letter-spacing:-.01em;margin:52px 0 0}
   <div class="grid" id="grid-info" role="group" aria-label="Infographics"></div>
   <p class="empty" id="empty" hidden>No works match your search. Clear the search or choose All.</p>
 
-    <footer>Select a work to open it, and again to close it. Research papers are open access under CC BY 4.0.</footer>
+    <footer>
+    <p class="hint">Select a work to open it, and again to close it.</p>
+    <div class="credit">
+      <p>&copy; 2012&ndash;<span id="yr">2026</span> Prof. Dr. M. Amr Sadik. Research papers are open access under CC BY 4.0. Articles first appeared in HR Future magazine.</p>
+      <p>Website design and development by <a href="https://ahmadsalehtuffaha.com" target="_blank" rel="noopener">Ahmad Saleh Tuffaha</a></p>
+    </div>
+  </footer>
 </div>
 
 <script>
@@ -280,6 +290,7 @@ fetch("works.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{
   WORKS=d;WORKS.forEach(w=>{w.cover=w.cover||"covers/"+w.id+".jpg"});
   WORKS.sort((a,b)=>b.date.localeCompare(a.date));render();
 }).catch(()=>{$("#status").textContent="The library could not be loaded. Please refresh the page.";});
+document.getElementById("yr").textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
