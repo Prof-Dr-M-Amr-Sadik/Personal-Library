@@ -132,6 +132,19 @@
   "doi": null
  },
  {
+  "id": "inferno-culture",
+  "type": "article",
+  "date": "2025-11-01",
+  "short": "Inferno as Organizational Culture",
+  "title": "Inferno as Organizational Culture",
+  "venue": "HR Future, November 2025, pp. 48–50",
+  "pages": 3,
+  "year": 2025,
+  "desc": "A metaphorical exploration of toxic work environments through Dante’s Inferno: the circles of organizational dysfunction, why the metaphor works, and the pathways out of a toxic culture.",
+  "pdf": "pdfs/hrfuture-2025-11-inferno-as-organizational-culture.pdf",
+  "doi": null
+ },
+ {
   "id": "measuring-what-matters",
   "type": "book",
   "date": "2025-10-04",
@@ -146,6 +159,45 @@
   "year": 2025,
   "desc": "A practical guide to measuring HR with key performance and key operational indicators, from building a data-driven HR culture to talent acquisition, engagement, retention, learning and performance management.",
   "pdf": "pdfs/book-2025-measuring-what-matters-most.pdf",
+  "doi": null
+ },
+ {
+  "id": "wealth-of-nations-revisited",
+  "type": "article",
+  "date": "2025-09-01",
+  "short": "The Wealth of Nations Revisited",
+  "title": "The Wealth of Nations Revisited",
+  "venue": "HR Future, September 2025, pp. 60–62",
+  "pages": 3,
+  "year": 2025,
+  "desc": "Revisits Adam Smith’s Wealth of Nations through the role of human capital: education, skills and the division of labour, and what they mean for HR strategy and human capital development today.",
+  "pdf": "pdfs/hrfuture-2025-09-the-wealth-of-nations-revisited.pdf",
+  "doi": null
+ },
+ {
+  "id": "organizational-silence",
+  "type": "article",
+  "date": "2025-01-01",
+  "short": "Organizational Silence",
+  "title": "Does Your Company Suffer from Organizational Silence?",
+  "venue": "HR Future, January 2025, pp. 28–30",
+  "pages": 3,
+  "year": 2025,
+  "desc": "Considers the implications of employees not speaking up: what organizational silence is, what causes it, how it affects people and organizations, and how to build a culture where concerns are voiced.",
+  "pdf": "pdfs/hrfuture-2025-01-organizational-silence.pdf",
+  "doi": null
+ },
+ {
+  "id": "retain-talent-culture",
+  "type": "article",
+  "date": "2024-11-01",
+  "short": "Nurture Culture to Retain Talent",
+  "title": "Nurture Organizational Culture to Retain Talent",
+  "venue": "HR Future, November 2024, pp. 36–37",
+  "pages": 2,
+  "year": 2024,
+  "desc": "Examines the link between organizational culture and employees’ intention to resign, drawing on research to show how different aspects of culture influence the decision to stay, with practical steps for managers.",
+  "pdf": "pdfs/hrfuture-2024-11-nurture-organizational-culture-to-retain-talent.pdf",
   "doi": null
  },
  {
