@@ -84,7 +84,7 @@ h1{font:300 clamp(2.2rem,4.6vw,3.6rem)/1.02 var(--serif);letter-spacing:-.02em;m
 footer{margin-top:56px;color:var(--muted);font-size:.88rem}
 footer .hint{margin:0}
 .credit{border-top:1px solid var(--line);margin-top:26px;padding-top:20px;line-height:1.65}
-.credit p{margin:0 0 4px;max-width:46em}
+.credit p{margin:0 0 4px}
 .credit a{color:var(--ink);font-weight:600;text-decoration:none}
 .credit a:hover{opacity:.7}
 @media (max-width:760px){
@@ -118,6 +118,11 @@ h2.sec{font:400 1.7rem/1.2 var(--serif);letter-spacing:-.01em;margin:52px 0 0}
 .card[aria-pressed="true"],.card[aria-pressed="true"]:hover{transform:translateY(-10px)}
 .card[aria-pressed="true"] img,.card[aria-pressed="true"] .cph{outline:3px solid var(--ink);outline-offset:2px}
 @media (max-width:560px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 16px}}
+.grid.gal{display:flex;flex-wrap:wrap;gap:28px 22px;align-items:flex-start}
+.gal .card{flex:var(--ar,.667) 1 calc(var(--ar,.667)*230px);max-width:calc(var(--ar,.667)*270px);min-width:0}
+.gal .card img{aspect-ratio:var(--ar,.667)}
+@media (min-width:761px){.detail.info.land{grid-template-columns:min(620px,52%) 1fr}}
+@media (max-width:560px){.grid.gal{gap:22px 16px}}
 .sec-btn{appearance:none;background:none;border:0;padding:0;margin:0;color:inherit;font:inherit;letter-spacing:inherit;cursor:pointer;display:inline-flex;align-items:center;text-align:left}
 .sec-btn::before{content:"";flex:none;border:solid transparent;border-width:6px 0 6px 9px;border-left-color:currentColor;margin-right:13px;transition:transform .2s ease}
 .sec-btn[aria-expanded="true"]::before{transform:rotate(90deg)}
@@ -168,7 +173,7 @@ h2.sec{font:400 1.7rem/1.2 var(--serif);letter-spacing:-.01em;margin:52px 0 0}
   <h2 class="sec" id="h-art"><button class="sec-btn" id="b-art" data-sec="art" aria-expanded="true" aria-controls="grid"><span class="tx">Magazine articles</span><span class="cnt"></span></button></h2>
   <div class="grid" id="grid" role="group" aria-label="Magazine articles"></div>
   <h2 class="sec" id="h-info"><button class="sec-btn" id="b-info" data-sec="info" aria-expanded="true" aria-controls="grid-info"><span class="tx">Infographics</span><span class="cnt"></span></button></h2>
-  <div class="grid" id="grid-info" role="group" aria-label="Infographics"></div>
+  <div class="grid gal" id="grid-info" role="group" aria-label="Infographics"></div>
   <p class="empty" id="empty" hidden>No works match your search. Clear the search or choose All.</p>
 
     <footer>
@@ -207,7 +212,7 @@ function fillPanel(w){
   if(w.doi)acts.push(`<a class="btn ghost" href="${w.doi}" target="_blank" rel="noopener">View on journal site</a>`);
   if(!f)acts.push(`<span class="btn off">PDF coming soon</span>`);
   const meta=[w.venue,w.pages?`${w.pages} ${w.pages===1?"page":"pages"}`:""].filter(Boolean).join(" &nbsp;·&nbsp; ");
-  panel.className="detail"+(info?" info":"");
+  panel.className="detail"+(info?" info":"")+(info&&w.ratio>1?" land":"");
   panel.innerHTML=`<div class="plate book cover"><img src="${info&&w.image?w.image:w.cover}" alt="${info?"":"Cover of "}${w.title}"></div>
     <div><p class="kind ${w.type}">${TYPES[w.type]}</p><h2>${w.title}</h2>${meta?`<p class="meta">${meta}</p>`:""}
     <p class="desc">${w.desc}</p><div class="actions">${acts.join("")}</div></div>`;
@@ -237,7 +242,7 @@ function gridHtml(items,years){
   let html="",yr="";
   items.forEach(w=>{
     if(years&&w.year!==yr){yr=w.year;html+=`<h3 class="yr">${yr}</h3>`;}
-    html+=`<button class="card" data-id="${w.id}" aria-pressed="false" aria-label="${w.title}${w.year?", "+w.year:""}">
+    html+=`<button class="card" data-id="${w.id}"${w.ratio?` style="--ar:${w.ratio}"`:""} aria-pressed="false" aria-label="${w.title}${w.year?", "+w.year:""}">
       <img src="${w.cover}" alt="" loading="lazy"><span class="ct">${w.short}</span>${vshort(w)?`<span class="cv">${vshort(w)}</span>`:""}</button>`;
   });
   return html;
