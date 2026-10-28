@@ -1,5 +1,35 @@
 [
  {
+  "id": "mission-contribution",
+  "type": "paper",
+  "date": "2026-10-12",
+  "short": "From PMS to Mission Contribution",
+  "title": "Conceptual Framework from Performance Management System to Mission Contribution Framework",
+  "venue": "World Journal of Advanced Research and Reviews, 32(01), pp. 847–852",
+  "pages": 6,
+  "year": 2026,
+  "desc": "Reviews the evidence that rating-based performance management delivers little of what it promises, draws on motivation theory to explain what ratings leave out, and proposes a Mission Contribution Framework: work is defined and recognized by its contribution to a stated mission and to named beneficiaries, with continuous coaching, collective judgement of evidence and pay decisions kept separate. It sets out an eight-step implementation path, the main risks and five proposed studies, and presents itself as a conceptual synthesis that still awaits empirical testing.",
+  "pdf": "pdfs/WJARR-2026-2588.pdf",
+  "doi": "https://doi.org/10.30574/wjarr.2026.32.1.2588"
+ },
+ {
+  "id": "druckerism",
+  "type": "book",
+  "date": "2023-01-01",
+  "lines": [
+   "Druckerism",
+   "Concise Management Thoughts"
+  ],
+  "short": "Druckerism",
+  "title": "Druckerism: Concise Management Thoughts",
+  "venue": "Book Rivers, 2023",
+  "pages": 108,
+  "year": 2023,
+  "desc": "Concise management thoughts inspired by Peter F. Drucker, written with Noha A. Alghazaly. After chapters on change, healthy organizations and the difference between leaders and managers, short thoughts take on leadership, communication, objectives, knowledge workers, decisions, time, planning, people decisions, strategy, change, measurement, culture and meetings.",
+  "pdf": "pdfs/book-2023-druckerism.pdf",
+  "doi": null
+ },
+ {
   "id": "real-education",
   "type": "quote",
   "date": "2026-10-28",
