@@ -1,5 +1,37 @@
 [
  {
+  "id": "pillars-of-strategy-execution",
+  "type": "infographic",
+  "date": "2026-10-28",
+  "short": "Pillars of Strategy Execution: A Practical Framework for Turning Strategy into Measurable Results",
+  "title": "Pillars of Strategy Execution: A Practical Framework for Turning Strategy into Measurable Results",
+  "venue": "",
+  "pages": null,
+  "year": null,
+  "desc": "Seven pillars (strategic clarity, leadership commitment, organizational alignment, people and capability, resource allocation, performance management, and culture and communication) carrying strategic impact and results, each with its key components, resting on alignment, accountability and measurement.",
+  "cover": "covers/pillars-of-strategy-execution-thumb.webp",
+  "file": "infographics/pillars-of-strategy-execution.jpg",
+  "pdf": null,
+  "doi": null,
+  "ratio": 1.5
+ },
+ {
+  "id": "hr-strategy-execution",
+  "type": "infographic",
+  "date": "2026-10-28",
+  "short": "HR Strategy Execution",
+  "title": "HR Strategy Execution",
+  "venue": "",
+  "pages": null,
+  "year": null,
+  "desc": "Six elements of executing an HR strategy around organizational performance: strategic alignment, leadership ownership, the HR operating model, systems and infrastructure, capability building, and measurement and accountability, each with its key components.",
+  "cover": "covers/hr-strategy-execution-thumb.webp",
+  "file": "infographics/hr-strategy-execution.jpg",
+  "pdf": null,
+  "doi": null,
+  "ratio": 1.0
+ },
+ {
   "id": "career-planning-in-hrm",
   "type": "infographic",
   "date": "2026-10-28",
