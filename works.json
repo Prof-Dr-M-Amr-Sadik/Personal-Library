@@ -1,5 +1,22 @@
 [
  {
+  "id": "bravo",
+  "type": "book",
+  "date": "2026-11-24",
+  "lines": [
+   "BRAVO",
+   "Value-Added Objectives"
+  ],
+  "short": "BRAVO",
+  "title": "BRAVO: Building Realistic Attainable Value-Added Objectives",
+  "venue": "AkiNik Publications, 2026",
+  "pages": 183,
+  "year": 2026,
+  "desc": "A practical method for setting objectives that are realistic, attainable and worth pursuing, bringing together Peter Drucker’s Management by Objectives and Management by Results. Five disciplines take an objective from strategy to a finished, written goal, followed by measurement and review, rollout, common pitfalls, case studies, links to OKRs and the Balanced Scorecard, a manager’s playbook, and appendices of templates and tools.",
+  "pdf": "pdfs/book-2026-bravo.pdf",
+  "doi": "https://doi.org/10.22271/ed.book.3935"
+ },
+ {
   "id": "pillars-of-strategy-execution",
   "type": "infographic",
   "date": "2026-10-28",
